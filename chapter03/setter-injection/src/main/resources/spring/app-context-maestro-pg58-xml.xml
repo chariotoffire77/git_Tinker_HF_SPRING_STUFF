@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- This one works....... -->
+    <bean id="messageProvider"
+          class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider">
+        <constructor-arg value="I hope that someone gets my message in a bottle"  />
+
+    </bean>
+
+    <!-- this one also works...... -->
+    <bean id="message"  class="java.lang.String" c:_0="Maestro, I hope that someone gets my message in a bottle" />
+
+    <bean id="message2"  class="java.lang.String" c:_0="++++Maestro1520, I hope that someone gets my message in a bottle" />
+
+    <bean id="messageProvider2"
+          class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider">
+        <constructor-arg ref="message2"  />
+
+    </bean>
+</beans>

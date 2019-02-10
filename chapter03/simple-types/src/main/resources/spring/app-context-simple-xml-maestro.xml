@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="injectSimple" class="com.apress.prospring5.ch3.xmlMaestroInjectSimple.InjectSimple"
+          p:name="John Mayer"
+          p:age="39"
+          p:height="1.92"
+          p:programmer="false"
+          p:ageInSeconds="1241401112">
+        <property name="greeting">
+            <value>"Maestro*****++> Hello world"</value>
+        </property>
+    </bean>
+
+    <bean id="injectSimpleConfigXml" class="com.apress.prospring5.ch3.xmlMaestroInjectSimple.InjectSimpleConfigXml" />
+
+    <bean id="injectSimpleSpelXml" class="com.apress.prospring5.ch3.xmlMaestroInjectSimple.InjectSimpleSpelXml"
+          p:name="#{injectSimpleConfigXml.name}"
+          p:age="#{injectSimpleConfigXml.age}"
+          p:height="#{injectSimpleConfigXml.height}"
+          p:programmer="#{injectSimpleConfigXml.programmer}"
+          p:ageInSeconds="#{injectSimpleConfigXml.ageInSeconds}"
+          p:greeting="#{injectSimpleConfigXml.greeting}"
+    >
+    </bean>
+
+    <bean id="injectSimpleConfigXmlById" name="injectSimpleConfigXmlByName" class="com.apress.prospring5.ch3.xmlMaestroInjectSimple.InjectSimpleConfigXml" />
+
+    <bean id="injectSimpleByRefAndLocal" class="com.apress.prospring5.ch3.xmlMaestroInjectSimple.InjectSimpleByRefAndLocal" >
+        <property name="injectSimpleConfigXml">
+            <!--
+            <ref bean="injectSimpleConfigXmlById" />
+            -->
+            <ref bean="injectSimpleConfigXmlByName" />
+        </property>
+    </bean>
+</beans>

@@ -10,9 +10,10 @@ public class InjectSimple {
 	private boolean programmer;
 	private Long ageInSeconds;
 
+
 	public static void main(String... args) {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-		ctx.load("classpath:spring/app-context-simple-xml.xml");
+		ctx.load("classpath:spring/app-context-simple-xml-maestro.xml");
 		ctx.refresh();
 
 		InjectSimple simple = (InjectSimple) ctx.getBean("injectSimple");
